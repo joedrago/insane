@@ -60,12 +60,23 @@ GfxEngine.prototype.startup = function()
 GfxEngine.prototype.begin = function()
 {
     //this.backBuffer.context.fillRect(0, 0, this.backBuffer.width, this.backBuffer.height);
-    this.screen.context.fillRect(0, 0, this.backBuffer.width, this.backBuffer.height);
+    this.drawRect('#000000', 0, 0, this.backBuffer.width, this.backBuffer.height);
 };
 
 GfxEngine.prototype.end = function()
 {
     //this.screen.context.drawImage(this.backBuffer.canvas, 0, 0);
+};
+
+GfxEngine.prototype.setFillStyle = function(style)
+{
+    this.screen.context.fillStyle = style;
+};
+
+GfxEngine.prototype.drawRect = function(style, x, y, w, h)
+{
+    this.setFillStyle(style);
+    this.screen.context.fillRect(x, y, w, h);
 };
 
 GfxEngine.prototype.drawImage = function(name, x, y, w, h)
@@ -93,6 +104,6 @@ GfxEngine.prototype.drawImage = function(name, x, y, w, h)
     this.screen.context.drawImage(asset.image,
             frame.sx, frame.sy, frame.sw, frame.sh,
             x, y, w, h);
-}
+};
 
 var gfx = new GfxEngine();

@@ -29,7 +29,7 @@ function GameLoop()
     this.elapsedFrames = 0;
     this.requestAnimFrame = (function()
     {
-        return  window.requestAnimationFrame       ||
+        return  (window.requestAnimationFrame) ? function(a,b) { return window.requestAnimationFrame(a,b); } :
                 window.webkitRequestAnimationFrame ||
                 window.mozRequestAnimationFrame    ||
                 window.oRequestAnimationFrame      ||
